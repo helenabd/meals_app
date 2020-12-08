@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_App/screen/meal_detail_screen.dart';
 
+import '../screens/meal_detail_screen.dart';
 import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
@@ -15,9 +15,9 @@ class MealItem extends StatelessWidget {
     @required this.id,
     @required this.title,
     @required this.imageUrl,
-    @required this.duration,
-    @required this.complexity,
     @required this.affordability,
+    @required this.complexity,
+    @required this.duration,
   });
 
   String get complexityText {
@@ -45,7 +45,7 @@ class MealItem extends StatelessWidget {
         return 'Pricey';
         break;
       case Affordability.Luxurious:
-        return 'Luxurious';
+        return 'Expensive';
         break;
       default:
         return 'Unknown';
@@ -53,9 +53,10 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: {
-      id,
-    });
+    Navigator.of(context).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    );
   }
 
   @override
@@ -104,17 +105,19 @@ class MealItem extends StatelessWidget {
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                ),
+                )
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+                children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
+                      Icon(
+                        Icons.schedule,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
@@ -123,7 +126,9 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.work),
+                      Icon(
+                        Icons.work,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
@@ -132,7 +137,9 @@ class MealItem extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
+                      Icon(
+                        Icons.attach_money,
+                      ),
                       SizedBox(
                         width: 6,
                       ),
@@ -141,7 +148,7 @@ class MealItem extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
